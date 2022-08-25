@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<launch>
+
+
+<!--   <param name="/use_sim_time" value="true"/> -->
+
+
+<!-- 话题 -->
+    <arg name="lidar_topic"         default="/velodyne_points" />
+
+    <arg name="fusion_pc_topic"     default="/fusion_points" />
+    <arg name="frame"         default="150" />
+    <arg name="interval"         default="1" />
+    
+        
+    <!-- load -->
+    <node name="pcl_reg" pkg="pcl_reg" type="pcl_reg" output="screen">
+        <param name="lidar_topic"         value="$(arg lidar_topic)"/>
+        <param name="fusion_pc_topic"     value="$(arg fusion_pc_topic)"/>
+        <param name="framenumber" value="$(arg frame)" />
+        <param name="interval" value="$(arg interval)" />
+    </node>
+
+<!--    <node name="pcl_reg_rgb" pkg="pcl_reg" type="pcl_reg_rgb" output="screen">-->
+<!--        <param name="lidar_topic"         value="$(arg lidar_topic)"/>-->
+<!--        <param name="fusion_pc_topic"     value="$(arg fusion_pc_topic)"/>-->
+<!--        <param name="framenumber" value="$(arg frame)" />-->
+<!--        <param name="interval" value="$(arg interval)" />-->
+<!--    </node>-->
+
+</launch>
